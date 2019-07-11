@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import { connect } from 'dva';
-import styles from './IndexPage.scss';
-
-function IndexPage() {
-  return (
-    <div>
-      添加用户
-    </div>
-  );
-}
-
-IndexPage.propTypes = {
-};
-
-export default connect()(IndexPage);
-=======
 import React, { Component, useEffect } from 'react';
 import { Modal, Button, Input, Table, message } from 'antd';
 import { connect } from 'dva';
@@ -164,4 +146,3 @@ export default connect(mapStateToProps, mapDisaptchToProps)(Adduser)
     //         visible: false,
     //     });
     // };
->>>>>>> qbc

@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import { connect } from 'dva';
-import styles from './IndexPage.scss';
-
-function IndexPage() {
-  return (
-    <div>
-      查看试题
-    </div>
-  );
-}
-
-IndexPage.propTypes = {
-};
-
-export default connect()(IndexPage);
-=======
 import React,{Component} from 'react';
 import { connect } from 'dva';
 import { Radio,Select ,Button } from 'antd';
@@ -98,4 +80,3 @@ const mapDisaptchToProps = dispatch => {
     }
 }
 export default connect(mapStateToProps,mapDisaptchToProps)(Checktest);
->>>>>>> qbc

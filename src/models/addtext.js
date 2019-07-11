@@ -1,35 +1,20 @@
-<<<<<<< HEAD
-import { examType, subject, getQuestionsType, submitBtn,userInfo } from '../services/index'
-=======
 import { examType } from '../services/index'
->>>>>>> qbc
 
 export default {
     namespace: 'addtext',
     state: {
-<<<<<<< HEAD
-        examTypedata: [],
-        subjectdata: [],
-        QuestionsTypedata: [],
-        userInfoData:[]
-=======
         examTypedata: []
->>>>>>> qbc
     },
 
     effects: {
         *examType({ payload, type }, { call, put }) {
             let data = yield call(examType)
-<<<<<<< HEAD
             // console.log(data.data)
-=======
->>>>>>> qbc
             yield put({
                 type: 'getExamtype',
                 payload: data.data
             })
         },
-<<<<<<< HEAD
         *subject({ payload }, { call, put }) {
             let data = yield call(subject)
             // console.log(data.data)
@@ -58,21 +43,10 @@ export default {
             console.log("generator...", payload);
             let data = yield call(submitBtn, payload)
             console.log(data)
-=======
-        *subType({ payload, type }, { call, put }) {
-            
-            // let data = yield call(examType)
-            // console.log(data.data)
-            // yield put({
-            //     type: 'getExamtype',
-            //     payload: data.data
-            // })
->>>>>>> qbc
         }
     },
 
     reducers: {
-<<<<<<< HEAD
         getExamtype(state, action) {
             return { ...state, examTypedata: action };
         },
@@ -85,11 +59,6 @@ export default {
         getuserInfo(state, action) {
             return { ...state, userInfoData: action };
         }
-=======
-        getExamtype(state,action) {
-            return { ...state, examTypedata:action};
-        },
->>>>>>> qbc
     },
 
 };
