@@ -1,12 +1,27 @@
 import { login } from '../services/index'
+<<<<<<< HEAD
 import { setToken, getToken } from '@/utils/index'
 import { routerRedux } from 'dva/router'
+=======
+<<<<<<< HEAD
+=======
+import { setToken, getToken } from '../utils/index'
+import { routerRedux } from 'dva/router'
+>>>>>>> qbc
+>>>>>>> qbc
 
 export default {
 
     namespace: 'login',
 
     state: {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+        isLogin: false
+    },
+=======
+>>>>>>> qbc
         isLogin: -1
     },
 
@@ -33,11 +48,24 @@ export default {
         }
     },
 
+<<<<<<< HEAD
+=======
+>>>>>>> qbc
+>>>>>>> qbc
     //异步操作
     effects: {
         *login({ payload, type }, { call, put }) {
             let data = yield call(login, payload)
             console.log(data)
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            //调用reduce改变登录状态
+            yield put({
+                type: 'updateLogin',
+                payload: data.code == 1
+=======
+>>>>>>> qbc
             if (data.code === 1) {
                 //设置cookie 
                 setToken(data.token)
@@ -47,6 +75,10 @@ export default {
             yield put({
                 type: 'updateLogin',
                 payload: data.code
+<<<<<<< HEAD
+=======
+>>>>>>> qbc
+>>>>>>> qbc
             })
         }
     },

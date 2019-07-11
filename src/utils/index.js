@@ -4,6 +4,11 @@ const key = 'authorization'
 export function setToken(val) {
     let date = new Date();
     let expires = date.getTime() + 10 * 60 * 60 * 1000;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> qbc
     date.setTime(expires)
     Cookie.set(key, val, { expires: date })
 }
@@ -14,4 +19,8 @@ export function getToken() {
 
 export function removeToken() {
     Cookie.remove(key)
+<<<<<<< HEAD
+=======
+>>>>>>> qbc
+>>>>>>> qbc
 }

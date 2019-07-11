@@ -1,40 +1,21 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> qbc
-:global {
-  .box {
-    width: 100%;
-    height: 100%;
-    .head {
-      width: 100%;
-      height: 60px;
-      background: #fff;
-      img{
-        width:150px;
-        height:30px;
-      }
-    }
-  }
-}
-<<<<<<< HEAD
-=======
-=======
-*{
+* {
   padding: 0px;
   margin: 0px;
   line-height: 0;
 }
-#root{
+
+#root {
   width: 100%;
   height: 100%;
 }
-.box{
+
+.box {
   width: 100%;
   height: 100%;
   background: #000080;
 }
-.login{
+
+.login {
   width: 400px;
   height: 296px;
   background: #FFFFFF;
@@ -43,23 +24,28 @@
   right: 15%;
   border-radius: 5px;
 }
-.logins{
+
+.logins {
   width: 90%;
   height: 90%;
   margin: auto;
   margin-top: 40px;
 }
-.btn{
+
+.btn {
   width: 100%;
   margin-top: 20px;
 }
-.pwd{
+
+.pwd {
   width: 80%;
 }
-.pwds{
+
+.pwds {
   width: 20%;
 }
-.top{
+
+.top {
   width: 100%;
   height: 80px;
   border-bottom: 1px solid #ccc;
@@ -69,5 +55,3 @@
   padding: 0 30px;
   box-sizing: border-box;
 }
->>>>>>> qbc
->>>>>>> qbc
