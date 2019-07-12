@@ -11,16 +11,9 @@ const app = dva();
 
 // 3. Model
 app.model(require('./models/login').default);
-<<<<<<< HEAD
-app.model(require('./models/addtext').default);
-=======
-<<<<<<< HEAD
-=======
 app.model(require('./models/addtext').default);
 app.model(require('./models/uesr').default);
 app.model(require('./models/exam').default);
->>>>>>> qbc
->>>>>>> qbc
 
 // 4. Router
 app.router(require('./router').default);

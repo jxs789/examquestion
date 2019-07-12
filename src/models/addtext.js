@@ -1,9 +1,12 @@
-import { examType } from '../services/index'
+import { examType, subject, getQuestionsType, submitBtn,userInfo } from '../services/index'
 
 export default {
     namespace: 'addtext',
     state: {
-        examTypedata: []
+        examTypedata: [],
+        subjectdata: [],
+        QuestionsTypedata: [],
+        userInfoData:[]
     },
 
     effects: {
