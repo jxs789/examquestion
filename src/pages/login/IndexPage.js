@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'dva';
-import styles from './IndexPage.scss'
+import './IndexPage.scss'
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 
 function IndexPage(props) {
@@ -19,7 +19,7 @@ function IndexPage(props) {
       message.success('登录成功');
       let path = "/";
       if (props.location.search) {
-        path = decodeURIComponent(props.location.search.split('=')[1])
+         path = decodeURIComponent(props.location.search.split('=')[1])
       }
       props.history.push('/home')
       console.log(props)

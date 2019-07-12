@@ -1,14 +1,14 @@
 import React from 'react';
 // import { connect } from 'dva'
-import { Layout, Menu, Icon, Button } from 'antd';
+import { Layout, Menu, Icon} from 'antd';
 import {  Route, Switch,NavLink } from 'dva/router';
 import AddTest from './questions/addtest/IndexPage'
 import TestClassify from './questions/testclassify/IndexPage'
 import CheckTest from './questions/checktest/IndexPage'
-import styles from './IndexPage.scss'
+import './IndexPage.scss'
 // import { connect } from 'dva';
 const { SubMenu } = Menu;
-const { Header, Footer, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 
 function IndexPage() {
   return (

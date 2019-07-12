@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Modal, Button, Input, Table, message } from 'antd';
+import { Modal, Button, Input, Table} from 'antd';
 import { connect } from 'dva';
 import './IndexPage.scss'
 const columns = [
     {
         title: '类型ID',
         dataIndex: 'questions_type_id',
-        render: text => <a href="javascript:;">{text}</a>,
+        // render: text => <a>{text}</a>,
     },
     {
         title: '类型名称',
@@ -29,7 +29,7 @@ const rowSelection = {
     }),
 };
 class Adduser extends Component {
-    
+
     state = { visible: false };
     showModal = () => {
         this.setState({
@@ -44,12 +44,11 @@ class Adduser extends Component {
     };
 
     componentDidMount() {
-         this.props.getData()
+        this.props.getData()
     };
     render() {
-        let { arr } = this.state;
         let { questions } = this.props
-        // console.log(this.props.questions)
+        console.log(this.props.questions)
         return (
             <div className="content">
                 <h2 style={{ marginTop: "10px" }}>考试分类</h2>
@@ -68,7 +67,8 @@ class Adduser extends Component {
                             })
                         }}></Input>
                     </Modal>
-                    <Table rowSelection={rowSelection} columns={columns} dataSource={questions} />
+                    <Table rowSelection={rowSelection} rowKey='questions_type_id' columns={columns} dataSource={questions} />
+
                 </div>
             </div>
         );
@@ -84,7 +84,7 @@ const mapStateToProps = state => {
 
 const mapDisaptchToProps = dispatch => {
     return {
-        getData(){
+        getData() {
             dispatch({
                 type: 'user/getDatas'
             })
