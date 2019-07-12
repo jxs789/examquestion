@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Modal, Button, Input, Table, message } from 'antd';
+import { Modal, Button, Input, Table } from 'antd';
 import { connect } from 'dva';
 import './IndexPage.scss'
 const columns = [
     {
         title: '类型ID',
         dataIndex: 'questions_type_id',
-        render: text => <a href="javascript:;">{text}</a>,
+        // render: text => <a href="javascript:;">{text}</a>,
     },
     {
         title: '类型名称',
@@ -47,7 +47,6 @@ class Adduser extends Component {
          this.props.getData()
     };
     render() {
-        let { arr } = this.state;
         let { questions } = this.props
         // console.log(this.props.questions)
         return (
@@ -68,7 +67,7 @@ class Adduser extends Component {
                             })
                         }}></Input>
                     </Modal>
-                    <Table rowSelection={rowSelection} columns={columns} dataSource={questions} />
+                    <Table rowSelection={rowSelection} rowKey='questions_type_id' columns={columns} dataSource={questions}/>
                 </div>
             </div>
         );

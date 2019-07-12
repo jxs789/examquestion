@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { connect } from 'dva';
-import { Radio,Select ,Button } from 'antd';
-import styles from './IndexPage.scss';
+import { Select ,Button } from 'antd';
+import './IndexPage.scss';
 
 class Checktest extends Component{
    componentDidMount() {
@@ -51,7 +51,7 @@ class Checktest extends Component{
                                     </div><span style={{ marginBottom: '10px',display:'inline-block'}}>{el.user_name} 发布</span></div>
                                 </a></div>
                             <ul className="ant-list-item-action">
-                                <li><a href="javascript:;">编辑</a>
+                                <li>编辑
                                 </li>
                             </ul>
                         </div>

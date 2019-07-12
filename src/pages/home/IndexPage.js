@@ -1,14 +1,12 @@
 import React from 'react';
-// import { connect } from 'dva'
-import { Layout, Menu, Icon, Button } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 import {  Route, Switch,NavLink } from 'dva/router';
-import AddTest from './addtest/IndexPage'
-import TestClassify from './testclassify/IndexPage'
-import CheckTest from './checktest/IndexPage'
-import styles from './IndexPage.scss'
-// import { connect } from 'dva';
+import AddTest from './questions/addtest/IndexPage'
+import TestClassify from './questions/testclassify/IndexPage'
+import CheckTest from './questions/checktest/IndexPage'
+import './IndexPage.scss'
 const { SubMenu } = Menu;
-const { Header, Footer, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 
 function IndexPage() {
   return (
@@ -19,8 +17,6 @@ function IndexPage() {
       <Layout>
         <Sider>
           <Menu
-            // defaultSelectedKeys={['1']}
-            // defaultOpenKeys={['sub1']}
             mode="inline"
             theme="dark"
           >
@@ -32,9 +28,9 @@ function IndexPage() {
                 </span>
               }
             >
-              <Menu.Item><NavLink to='/home/addtest'>添加试题</NavLink></Menu.Item>
-              <Menu.Item><NavLink to='/home/testclassify'>试题分类</NavLink></Menu.Item>
-              <Menu.Item><NavLink to='/home/checktest'>查看试题</NavLink></Menu.Item>
+              <Menu.Item><NavLink to='/home/questions/addtest'>添加试题</NavLink></Menu.Item>
+              <Menu.Item><NavLink to='/home/questions/testclassify'>试题分类</NavLink></Menu.Item>
+              <Menu.Item><NavLink to='/home/questions/checktest'>查看试题</NavLink></Menu.Item>
             </SubMenu>
             <SubMenu
               title={
@@ -74,9 +70,9 @@ function IndexPage() {
         </Sider>
         <Content>
             <Switch>
-              <Route path='/home/addtest' component={AddTest} />
-              <Route path='/home/testclassify' component={TestClassify} />
-              <Route path='/home/checktest' component={CheckTest} />
+              <Route path='/home/questions/addtest' component={AddTest} />
+              <Route path='/home/questions/testclassify' component={TestClassify} />
+              <Route path='/home/questions/checktest' component={CheckTest} />
             </Switch>
         </Content>
       </Layout>

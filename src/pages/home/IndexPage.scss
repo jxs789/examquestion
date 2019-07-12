@@ -13,3 +13,18 @@
     }
   }
 }
+:global {
+  .box {
+    width: 100%;
+    height: 100%;
+    .head {
+      width: 100%;
+      height: 60px;
+      background: #fff;
+      img{
+        width:150px;
+        height:30px;
+      }
+    }
+  }
+}
