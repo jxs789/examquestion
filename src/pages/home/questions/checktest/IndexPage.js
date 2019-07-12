@@ -27,7 +27,7 @@ class Checktest extends Component{
                         <span>题目类型：</span>
                          <Select defaultValue='' style={{ width: 120 }} >
 
-                        </Select>
+                        </Select> 
                         </div>
                         <Button type="primary" icon="search">搜索</Button>  
                         </div>
@@ -51,7 +51,7 @@ class Checktest extends Component{
                                     </div><span style={{ marginBottom: '10px',display:'inline-block'}}>{el.user_name} 发布</span></div>
                                 </a></div>
                             <ul className="ant-list-item-action">
-                                <li>编辑
+                                <li><a>编辑</a>
                                 </li>
                             </ul>
                         </div>

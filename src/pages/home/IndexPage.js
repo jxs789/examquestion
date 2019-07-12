@@ -4,6 +4,7 @@ import {  Route, Switch,NavLink } from 'dva/router';
 import AddTest from './questions/addtest/IndexPage'
 import TestClassify from './questions/testclassify/IndexPage'
 import CheckTest from './questions/checktest/IndexPage'
+// import Detail from './questions/checktest/detail/IndexPage'
 import './IndexPage.scss'
 const { SubMenu } = Menu;
 const { Sider, Content } = Layout;
@@ -85,3 +86,6 @@ IndexPage.propTypes = {
 
 
 export default IndexPage;
+
+
+// <Route path='/home/questions/checktest/detail' component={Detail} />

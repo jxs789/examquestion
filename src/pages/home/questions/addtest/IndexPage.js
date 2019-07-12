@@ -92,15 +92,17 @@ class IndexPage extends Component {
     this.setState({
       visible: false,
     });
-    this.props.subType({
-      questions_type_id: examType,
-      questions_stem: value,
-      subject_id: courseType,
-      exam_id: week,
-      user_id: JSON.parse(localStorage.getItem('userinfo')).user_id,
-      questions_answer: downMd,
-      title: topMd,
-    })
+    if (value !== '' && examType !== '' && downMd !== '' && courseType !== '' && week !== '' && topMd !== '') {
+      this.props.subType({
+        questions_stem: value,
+        questions_type_id: examType,
+        questions_answer: downMd,
+        subject_id: courseType,
+        exam_id: week,
+        title: topMd,
+        user_id: JSON.parse(localStorage.getItem('userinfo')).user_id,
+      })
+    }
     // console.log(JSON.parse(localStorage.getItem('userinfo')).user_id)
   };
 

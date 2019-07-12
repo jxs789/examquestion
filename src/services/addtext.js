@@ -35,3 +35,11 @@ export function examQuestions(){
     method:'GET'
   })
 }
+//添加试题
+export function insertQuestions(params){
+  return request({
+    url:'/exam/insertQuestionsType',
+    method:'GET',
+    params
+  })
+}

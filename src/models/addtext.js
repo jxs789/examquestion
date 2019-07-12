@@ -1,4 +1,4 @@
-import { examType, subject, getQuestionsType, submitBtn,userInfo } from '../services/index'
+import { examType, subject, getQuestionsType, submitBtn,userInfo,insertQuestions} from '../services/index'
 
 export default {
     namespace: 'addtext',
@@ -42,11 +42,14 @@ export default {
                 payload: data.data
             })
         },
+        *sertQuestions({payload},{call,put}){
+            console.log('sertQuestions...',payload);
+            let data = yield call(insertQuestions,payload)
+        },
         *subType({ payload }, { call, put }) {
             console.log("generator...", payload);
             let data = yield call(submitBtn, payload)
-            console.log(data)
-        }
+        },
     },
 
     reducers: {
@@ -61,7 +64,8 @@ export default {
         },
         getuserInfo(state, action) {
             return { ...state, userInfoData: action };
-        }
+        },
+
     },
 
 };
