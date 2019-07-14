@@ -1,4 +1,3 @@
-
 import request from '../utils/request'
 
 export function examType() {
@@ -34,4 +33,8 @@ export function examQuestions(){
     url:'/exam/questions/new',
     method:'GET'
   })
+}
+//搜索试题
+export function condition(params){
+  return request.get('/exam/questions/condition',{params})
 }

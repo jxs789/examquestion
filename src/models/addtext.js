@@ -1,15 +1,26 @@
-import { examType, subject, getQuestionsType, submitBtn,userInfo } from '../services/index'
+import { examType, subject, getQuestionsType, submitBtn, userInfo, examQuestions, condition } from '../services/index'
 
 export default {
     namespace: 'addtext',
     state: {
+        Examquestions: [],
         examTypedata: [],
         subjectdata: [],
         QuestionsTypedata: [],
-        userInfoData:[]
+        userInfoData: [],
+        code:0
     },
 
     effects: {
+        //查看试题里面的所有试题
+        *ExamQuestions({ payload }, { call, put }) {
+            let data = yield call(examQuestions)
+            yield put({
+                type: "exao",
+                payload: data.data
+            })
+        },
+        //考试类型
         *examType({ payload, type }, { call, put }) {
             let data = yield call(examType)
             // console.log(data.data)
@@ -18,6 +29,7 @@ export default {
                 payload: data.data
             })
         },
+        //课程类型
         *subject({ payload }, { call, put }) {
             let data = yield call(subject)
             // console.log(data.data)
@@ -26,6 +38,7 @@ export default {
                 payload: data.data
             })
         },
+        //题目类型
         *getQuestionsType({ payload }, { call, put }) {
             let data = yield call(getQuestionsType)
             yield put({
@@ -33,23 +46,35 @@ export default {
                 payload: data.data
             })
         },
-        *userInfo({ payload }, { call, put }){
+        //用户
+        *userInfo({ payload }, { call, put }) {
             let data = yield call(userInfo)
             console.log(data.data)
-            localStorage.setItem('userinfo',JSON.stringify(data.data))
+            localStorage.setItem('userinfo', JSON.stringify(data.data))
             yield put({
                 type: 'getuserInfo',
                 payload: data.data
             })
         },
-        *subType({ payload }, { call, put }) {
-            console.log("generator...", payload);
+        *subType({ payload}, { call, put }) {
             let data = yield call(submitBtn, payload)
             console.log(data)
+            yield put({
+                type:'getCode',
+                payload:data.code === 1? 1 :-1
+            })
+        },
+        //搜索试题
+        *condition({ payload }, { call, put }) {
+            let data = yield call(condition, payload)
+            yield put({ type: 'exao', payload: data.data })
         }
     },
 
     reducers: {
+        exao(state, { payload }) {
+            return { ...state, Examquestions: payload }
+        },
         getExamtype(state, action) {
             return { ...state, examTypedata: action };
         },
@@ -61,6 +86,10 @@ export default {
         },
         getuserInfo(state, action) {
             return { ...state, userInfoData: action };
+        },
+        getCode(state, action){
+            console.log(action);
+            return { ...state,code: action.payload}
         }
     },
 

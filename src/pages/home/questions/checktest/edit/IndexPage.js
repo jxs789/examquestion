@@ -15,7 +15,7 @@ function IndexPage(props) {
         props.userInfo()
     }, [])
 
-    let { addtext: { examTypedata, subjectdata, QuestionsTypedata } } = props;
+    let { addtext: { Examquestions, examTypedata, subjectdata, QuestionsTypedata } } = props;
     let [val, setVal] = useState('')
     let [topval, setTopVal] = useState('')
     let [examval, setexamVal] = useState("- 请选择 -")
@@ -52,7 +52,7 @@ function IndexPage(props) {
             title: topval,
         })
         if (props.addtext.code === 1) {
-            message.success('试题添加成功')
+            message.success('试题修改成功')
         }
         // console.log(faceval,val,courseval,examval,downval,topval)
         setvis(false)
@@ -72,14 +72,14 @@ function IndexPage(props) {
                 <div className='inp'>
                     <Input
                         onChange={getVal}
-                        value={val}
+                        value={val ? val : Examquestions[0] && Examquestions[0].title}
                     />
                 </div>
                 <div className='topMd'>
                     <p>题目主题</p>
                     <Editor
                         onChange={getTop}
-                        value={topval}
+                        value={topval ? topval : Examquestions[0] && Examquestions[0].questions_stem}
                         lineNum={true} expand={false} placeholder='请输入内容' />
                 </div>
                 <div>
@@ -125,7 +125,7 @@ function IndexPage(props) {
                     <p>答案信息</p>
                     <Editor
                         onChange={getdown}
-                        value={downval} lineNum={true} expand={false} placeholder='请输入内容' />
+                        value={downval ? downval : Examquestions[0] && Examquestions[0].questions_answer} lineNum={true} expand={false} placeholder='请输入内容' />
                 </div>
                 <Button type="primary"
                     onClick={Submit}
@@ -149,6 +149,11 @@ const MapStateToProps = (state) => {
 }
 const MapStateToDispatch = (dispatch) => {
     return {
+        examQuestions() {
+            dispatch({
+                type: 'addtext/ExamQuestions'
+            })
+        },
         condition: (payload) => {
             dispatch({
                 type: 'addtext/condition',
@@ -185,5 +190,4 @@ const MapStateToDispatch = (dispatch) => {
         }
     }
 }
-
 export default connect(MapStateToProps, MapStateToDispatch)(IndexPage);

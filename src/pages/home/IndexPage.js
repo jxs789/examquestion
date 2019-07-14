@@ -5,6 +5,10 @@ import {  Route, Switch,NavLink } from 'dva/router';
 import AddTest from './questions/addtest/IndexPage'
 import TestClassify from './questions/testclassify/IndexPage'
 import CheckTest from './questions/checktest/IndexPage'
+import Detail from './questions/checktest/detail/IndexPage' //试题详情
+import Edit from './questions/checktest/edit/IndexPage' //编辑详情
+
+
 import './IndexPage.scss'
 // import { connect } from 'dva';
 const { SubMenu } = Menu;
@@ -19,8 +23,8 @@ function IndexPage() {
       <Layout>
         <Sider>
           <Menu
-            // defaultSelectedKeys={['1']}
-            // defaultOpenKeys={['sub1']}
+            defaultSelectedKeys={['1']}
+            defaultOpenKeys={['sub1']}
             mode="inline"
             theme="dark"
           >
@@ -77,6 +81,8 @@ function IndexPage() {
               <Route path='/home/questions/addtest' component={AddTest} />
               <Route path='/home/questions/testclassify' component={TestClassify} />
               <Route path='/home/questions/checktest' component={CheckTest} />
+              <Route path='/home/questions/detail/:id' component={Detail} />
+              <Route path='/home/questions/edit/:id' component={Edit} />
             </Switch>
         </Content>
       </Layout>

@@ -9,7 +9,6 @@ function IndexPage(props) {
     props.form.validateFields((err, values) => {
       if (!err) {
         props.login({ user_name: values.username, user_pwd: values.password });
-        // console.log('Received values of form: ', values);
       }
     });
   }
