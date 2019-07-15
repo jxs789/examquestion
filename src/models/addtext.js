@@ -1,5 +1,4 @@
-
-import { examType, subject, getQuestionsType, submitBtn, userInfo, examQuestions, condition,insertQuestions } from '../services/index'
+import { examType, subject, getQuestionsType, submitBtn, userInfo, examQuestions, condition } from '../services/index'
 
 export default {
     namespace: 'addtext',
@@ -55,10 +54,6 @@ export default {
                 type: 'getuserInfo',
                 payload: data.data
             })
-        },
-        *sertQuestions({payload},{call,put}){
-            console.log('sertQuestions...',payload);
-            let data = yield call(insertQuestions,payload)
         },
         //添加页 的 提交 编辑页的提交
         *subType({ payload}, { call, put }) {

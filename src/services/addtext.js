@@ -34,18 +34,7 @@ export function examQuestions(){
     method:'GET'
   })
 }
-
-//添加试题
-export function insertQuestions(params){
-  return request({
-    url:'/exam/insertQuestionsType',
-    method:'GET',
-    params
-  })
-}
-
 //搜索试题
 export function condition(params){
   return request.get('/exam/questions/condition',{params})
 }
-
