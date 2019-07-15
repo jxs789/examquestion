@@ -73,6 +73,7 @@ function IndexPage(props) {
                     <Input
                         onChange={getVal}
                         value={val}
+                        placeholder='请输入要添加的内容'
                     />
                 </div>
                 <div className='topMd'>

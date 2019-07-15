@@ -49,16 +49,15 @@ export default {
         //用户
         *userInfo({ payload }, { call, put }) {
             let data = yield call(userInfo)
-            console.log(data.data)
             localStorage.setItem('userinfo', JSON.stringify(data.data))
             yield put({
                 type: 'getuserInfo',
                 payload: data.data
             })
         },
+        //添加页 的 提交 编辑页的提交
         *subType({ payload}, { call, put }) {
             let data = yield call(submitBtn, payload)
-            console.log(data)
             yield put({
                 type:'getCode',
                 payload:data.code === 1? 1 :-1
@@ -88,7 +87,6 @@ export default {
             return { ...state, userInfoData: action };
         },
         getCode(state, action){
-            console.log(action);
             return { ...state,code: action.payload}
         }
     },

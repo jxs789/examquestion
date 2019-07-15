@@ -1,12 +1,13 @@
 import React from 'react';
 // import { connect } from 'dva'
-import { Layout, Menu, Icon} from 'antd';
-import {  Route, Switch,NavLink } from 'dva/router';
+import { Layout, Menu, Icon, Spin } from 'antd';
+import { Route, Switch, NavLink } from 'dva/router';
 import AddTest from './questions/addtest/IndexPage'
 import TestClassify from './questions/testclassify/IndexPage'
 import CheckTest from './questions/checktest/IndexPage'
 import Detail from './questions/checktest/detail/IndexPage' //试题详情
 import Edit from './questions/checktest/edit/IndexPage' //编辑详情
+import { connect } from 'dva';
 
 
 import './IndexPage.scss'
@@ -14,7 +15,7 @@ import './IndexPage.scss'
 const { SubMenu } = Menu;
 const { Sider, Content } = Layout;
 
-function IndexPage() {
+function IndexPage(props) {
   return (
     <Layout className='box'>
       <div className='head'>
@@ -77,21 +78,28 @@ function IndexPage() {
           </Menu>
         </Sider>
         <Content>
-            <Switch>
-              <Route path='/home/questions/addtest' component={AddTest} />
-              <Route path='/home/questions/testclassify' component={TestClassify} />
-              <Route path='/home/questions/checktest' component={CheckTest} />
-              <Route path='/home/questions/detail/:id' component={Detail} />
-              <Route path='/home/questions/edit/:id' component={Edit} />
-            </Switch>
+          <Switch>
+            <Route path='/home/questions/addtest' component={AddTest} />
+            <Route path='/home/questions/testclassify' component={TestClassify} />
+            <Route path='/home/questions/checktest' component={CheckTest} />
+            <Route path='/home/questions/detail/:id' component={Detail} />
+            <Route path='/home/questions/edit/:id' component={Edit} />
+          </Switch>
         </Content>
       </Layout>
+      {props.global ? <div className='load'><Spin /></div> : null}
     </Layout>
   );
 }
 
-IndexPage.propTypes = {
-};
+const MapStateToProps = (state) => {
+  return { ...state, global: state.loading.global }
+}
+const MapStateToDispatch = (dispatch) => {
+  return {
 
+  }
+}
 
-export default IndexPage;
+export default connect(MapStateToProps, MapStateToDispatch)(IndexPage);
+
