@@ -1,4 +1,14 @@
-import { examType, subject, getQuestionsType, submitBtn, userInfo, examQuestions, condition, Questions,insertQuestions } from '../services/index'
+import {
+    examType,
+    subject,
+    getQuestionsType,
+    submitBtn,
+    userInfo,
+    examQuestions,
+    condition,
+    Questions,
+    insertQuestions
+} from '../services/index'
 
 export default {
     namespace: 'addtext',
@@ -77,9 +87,9 @@ export default {
                 payload: data.data
             })
         },
-        *sertQuestions({payload},{call,put}){
-            console.log('sertQuestions...',payload);
-            let data = yield call(insertQuestions,payload)
+        *sertQuestions({ payload }, { call, put }) {
+            console.log('sertQuestions...', payload);
+            let data = yield call(insertQuestions, payload)
         }
     },
 
