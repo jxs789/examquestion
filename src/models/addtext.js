@@ -1,4 +1,4 @@
-import { examType, subject, getQuestionsType, submitBtn, userInfo, examQuestions, condition,insertQuestions } from '../services/index'
+import { examType, subject, getQuestionsType, submitBtn, userInfo, examQuestions, condition, insertQuestions,Questions } from '../services/index'
 
 export default {
     namespace: 'addtext',
@@ -8,7 +8,8 @@ export default {
         subjectdata: [],
         QuestionsTypedata: [],
         userInfoData: [],
-        code:0
+        questions: [],
+        code: 0
     },
 
     effects: {
@@ -56,22 +57,30 @@ export default {
             })
         },
         //添加页 的 提交 编辑页的提交
-        *subType({ payload}, { call, put }) {
+        *subType({ payload }, { call, put }) {
             let data = yield call(submitBtn, payload)
             yield put({
-                type:'getCode',
-                payload:data.code === 1? 1 :-1
+                type: 'getCode',
+                payload: data.code === 1 ? 1 : -1
             })
         },
-         *sertQuestions({payload},{call,put}){
-            console.log('sertQuestions...',payload);
-            let data = yield call(insertQuestions,payload)
+        *sertQuestions({ payload }, { call, put }) {
+            console.log('sertQuestions...', payload);
+            let data = yield call(insertQuestions, payload)
         },
         //搜索试题
         *condition({ payload }, { call, put }) {
             let data = yield call(condition, payload)
             yield put({ type: 'exao', payload: data.data })
-        }
+        },
+        //查看试题所有数据
+        *getDatas({ payload }, { call, put }) {
+            let data = yield call(Questions)
+            yield put({
+                type: "exo",
+                payload: data.data
+            })
+        },
     },
 
     reducers: {
@@ -90,9 +99,12 @@ export default {
         getuserInfo(state, action) {
             return { ...state, userInfoData: action };
         },
-        getCode(state, action){
-            return { ...state,code: action.payload}
-        }
+        getCode(state, action) {
+            return { ...state, code: action.payload }
+        },
+        exo(state, { payload }) {
+            return { ...state, questions: payload }
+        },
     },
 
 };

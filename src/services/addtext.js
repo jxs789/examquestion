@@ -42,6 +42,7 @@ export function examQuestions(){
     method:'GET'
   })
 }
+
 //搜索试题
 export function condition(params){
   return request.get('/exam/questions/condition',{params})

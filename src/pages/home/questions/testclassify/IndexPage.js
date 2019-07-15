@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, Input, Table, message,Spin } from 'antd';
+import { Modal, Button, Input, Table, message } from 'antd';
 import { connect } from 'dva';
 import './IndexPage.scss'
 const columns = [
@@ -61,8 +61,6 @@ class Adduser extends Component {
     };
     render() {
         let { questions } = this.props;
-
-        console.log(this.props.questions)
         return (
             <div className="content">
                 <h2 style={{ marginTop: "10px" }}>考试分类</h2>
@@ -91,7 +89,7 @@ class Adduser extends Component {
 
 const mapStateToProps = state => {
     return {
-        ...state.user
+        ...state.addtext
     }
 }
 
@@ -99,7 +97,7 @@ const mapDisaptchToProps = dispatch => {
     return {
         getData() {
             dispatch({
-                type: 'user/getDatas'
+                type: 'addtext/getDatas'
             })
         },
         sertQuestions(payload) {
