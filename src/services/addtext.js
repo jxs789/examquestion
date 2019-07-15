@@ -1,4 +1,3 @@
-
 import request from '../utils/request'
 
 export function examType() {
@@ -35,6 +34,7 @@ export function examQuestions(){
     method:'GET'
   })
 }
+
 //添加试题
 export function insertQuestions(params){
   return request({
@@ -42,5 +42,10 @@ export function insertQuestions(params){
     method:'GET',
     params
   })
+}
+
+//搜索试题
+export function condition(params){
+  return request.get('/exam/questions/condition',{params})
 }
 

@@ -9,7 +9,6 @@ function IndexPage(props) {
     props.form.validateFields((err, values) => {
       if (!err) {
         props.login({ user_name: values.username, user_pwd: values.password });
-        // console.log('Received values of form: ', values);
       }
     });
   }
@@ -19,7 +18,7 @@ function IndexPage(props) {
       message.success('登录成功');
       let path = "/";
       if (props.location.search) {
-        path = decodeURIComponent(props.location.search.split('=')[1])
+         path = decodeURIComponent(props.location.search.split('=')[1])
       }
       props.history.push('/home')
       console.log(props)

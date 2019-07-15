@@ -6,7 +6,6 @@ const columns = [
     {
         title: '类型ID',
         dataIndex: 'questions_type_id',
-        // render: text => <a href="javascript:;">{text}</a>,
     },
     {
         title: '类型名称',
@@ -30,6 +29,7 @@ const rowSelection = {
 };
 class Adduser extends Component {
     state = { visible: false, value: '' };
+    state = { visible: false };
     showModal = () => {
         this.setState({
             visible: true,
@@ -61,6 +61,7 @@ class Adduser extends Component {
     };
     render() {
         let { questions } = this.props;
+        console.log(this.props.questions)
         return (
             <div className="content">
                 <h2 style={{ marginTop: "10px" }}>考试分类</h2>

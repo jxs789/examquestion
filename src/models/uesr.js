@@ -1,4 +1,6 @@
+
 import { Questions } from '../services/index'
+
 export default {
     // 命名空间
     namespace: 'user',
