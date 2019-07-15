@@ -12,20 +12,20 @@ class Checktest extends Component{
       console.log(Examquestions)
        return (
           <div className="content">
-                <h2 style={{ marginTop: "10px" }}>查看试题</h2>
+                <h2 >查看试题</h2>
                  <div className="el_conent">
                     <div>
                         <span>课程类型：</span>
                         <div className="el-Button">
                         <div>
                             <span>考试类型：</span>
-                             <Select defaultValue='周考二' style={{ width: 120 }} >
+                             <Select defaultValue='周考二' >
                              
                             </Select> 
                         </div>
                         <div>
                         <span>题目类型：</span>
-                         <Select defaultValue='' style={{ width: 120 }} >
+                         <Select defaultValue='' >
 
                         </Select> 
                         </div>
@@ -44,11 +44,11 @@ class Checktest extends Component{
                                             <h4 className="ant-list-item-meta-title">{el.title}</h4>
                                         </div>
                                     </div>
-                                    <div style={{ marginTop: '10px' }}><div style={{ paddingBottom: '20px' }}>
+                                    <div><div>
                                         <div className="ant-tag ant-tag-blue">{el.questions_type_text}</div>
                                         <div className="ant-tag ant-tag-geekblue">{el.subject_text}</div>
                                         <div className="ant-tag ant-tag-orange">{el.exam_name}</div>
-                                    </div><span style={{ marginBottom: '10px',display:'inline-block'}}>{el.user_name} 发布</span></div>
+                                    </div><span>{el.user_name} 发布</span></div>
                                 </a></div>
                             <ul className="ant-list-item-action">
                                 <li><a>编辑</a>

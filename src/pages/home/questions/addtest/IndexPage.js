@@ -88,7 +88,6 @@ class IndexPage extends Component {
   handleOk = e => {
     console.log(e);
     let { topMd, downMd, value, week, courseType, examType } = this.state;
-    // console.log(topMd, downMd, value, week, courseType, examType);
     this.setState({
       visible: false,
     });
@@ -103,7 +102,6 @@ class IndexPage extends Component {
         user_id: JSON.parse(localStorage.getItem('userinfo')).user_id,
       })
     }
-    // console.log(JSON.parse(localStorage.getItem('userinfo')).user_id)
   };
 
   handleCancel = e => {

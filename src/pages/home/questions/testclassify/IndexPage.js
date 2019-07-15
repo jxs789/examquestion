@@ -29,8 +29,6 @@ const rowSelection = {
     }),
 };
 class Adduser extends Component {
-    // constructor(){
-    // }
     state = { visible: false, value: '' };
     showModal = () => {
         this.setState({
@@ -46,7 +44,6 @@ class Adduser extends Component {
             sort: JSON.stringify(questions.length + 1)
         })
         }
-        // console.log(this.state.value,questions.length + 1)
         message.info('数据插入成功');
         this.setState({
             visible: false,
@@ -63,7 +60,6 @@ class Adduser extends Component {
         this.props.getData()
     };
     render() {
-        // let { arr } = this.state
         let { questions } = this.props;
         return (
             <div className="content">
@@ -105,7 +101,6 @@ const mapDisaptchToProps = dispatch => {
             })
         },
         sertQuestions(payload) {
-            // console.log(payload)
             dispatch({
                 type: 'addtext/sertQuestions',
                 payload
@@ -116,9 +111,6 @@ const mapDisaptchToProps = dispatch => {
 
 export default connect(mapStateToProps, mapDisaptchToProps)(Adduser)
 
-
-
-                    // {props.global?<Spin></Spin>:null}
 
 
 
