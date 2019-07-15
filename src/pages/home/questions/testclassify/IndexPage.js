@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, Input, Table, message,Spin } from 'antd';
+import { Modal, Button, Input, Table, message } from 'antd';
 import { connect } from 'dva';
 import './IndexPage.scss'
 const columns = [
@@ -20,7 +20,7 @@ const columns = [
 
 const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
-        // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
     },
     getCheckboxProps: record => ({
         disabled: record.name === 'Disabled User', // Column configuration not to be checked
@@ -29,7 +29,6 @@ const rowSelection = {
 };
 class Adduser extends Component {
     state = { visible: false, value: '' };
-    state = { visible: false };
     showModal = () => {
         this.setState({
             visible: true,
@@ -38,11 +37,11 @@ class Adduser extends Component {
 
     handleOk = e => {
         let { questions } = this.props;
-        if(this.state.value!==''){
+        if (this.state.value !== '') {
             this.props.sertQuestions({
-            text: this.state.value,
-            sort: JSON.stringify(questions.length + 1)
-        })
+                text: this.state.value,
+                sort: JSON.stringify(questions.length + 1)
+            })
         }
         message.info('数据插入成功');
         this.setState({
@@ -61,7 +60,7 @@ class Adduser extends Component {
     };
     render() {
         let { questions } = this.props;
-        console.log(this.props.questions)
+        console.log(this.props)
         return (
             <div className="content">
                 <h2 style={{ marginTop: "10px" }}>考试分类</h2>
@@ -72,7 +71,7 @@ class Adduser extends Component {
                     <Modal
                         title="创建新类型"
                         visible={this.state.visible}
-                        onOk={this.handleOk} 
+                        onOk={this.handleOk}
                         onCancel={this.handleCancel}>
                         <Input placeholder="请输入类型名称" value={this.state.value} onChange={(e) => {
                             this.setState({
@@ -90,7 +89,7 @@ class Adduser extends Component {
 
 const mapStateToProps = state => {
     return {
-        ...state.user
+        ...state.addtext
     }
 }
 
@@ -98,7 +97,7 @@ const mapDisaptchToProps = dispatch => {
     return {
         getData() {
             dispatch({
-                type: 'user/getDatas'
+                type: 'addtext/getDatas'
             })
         },
         sertQuestions(payload) {
