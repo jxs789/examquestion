@@ -20,7 +20,7 @@ const columns = [
 
 const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
-        // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
     },
     getCheckboxProps: record => ({
         disabled: record.name === 'Disabled User', // Column configuration not to be checked
@@ -28,7 +28,7 @@ const rowSelection = {
     }),
 };
 class Adduser extends Component {
-    state = { visible: false, value: '' };
+    // state = { visible: false, value: '' };
     state = { visible: false };
     showModal = () => {
         this.setState({
@@ -61,6 +61,7 @@ class Adduser extends Component {
     };
     render() {
         let { questions } = this.props;
+
         console.log(this.props.questions)
         return (
             <div className="content">

@@ -27,14 +27,6 @@ export function Questions(){
     method:'GET'
   })
 }
-//获取所有试题
-export function examQuestions(){
-  return request({
-    url:'/exam/questions/new',
-    method:'GET'
-  })
-}
-
 //添加试题
 export function insertQuestions(params){
   return request({
@@ -43,9 +35,14 @@ export function insertQuestions(params){
     params
   })
 }
-
+//获取所有试题
+export function examQuestions(){
+  return request({
+    url:'/exam/questions/new',
+    method:'GET'
+  })
+}
 //搜索试题
 export function condition(params){
   return request.get('/exam/questions/condition',{params})
 }
-

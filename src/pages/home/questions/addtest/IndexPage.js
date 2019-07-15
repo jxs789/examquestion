@@ -14,7 +14,7 @@ class IndexPage extends Component {
       downMd: '',
       value: '',
       week: '',
-      courseType: '',
+      courseType: '', 
       examType: '',
       visible: false
     };

@@ -1,4 +1,3 @@
-
 import { examType, subject, getQuestionsType, submitBtn, userInfo, examQuestions, condition,insertQuestions } from '../services/index'
 
 export default {
@@ -56,10 +55,6 @@ export default {
                 payload: data.data
             })
         },
-        *sertQuestions({payload},{call,put}){
-            console.log('sertQuestions...',payload);
-            let data = yield call(insertQuestions,payload)
-        },
         //添加页 的 提交 编辑页的提交
         *subType({ payload}, { call, put }) {
             let data = yield call(submitBtn, payload)
@@ -67,6 +62,10 @@ export default {
                 type:'getCode',
                 payload:data.code === 1? 1 :-1
             })
+        },
+         *sertQuestions({payload},{call,put}){
+            console.log('sertQuestions...',payload);
+            let data = yield call(insertQuestions,payload)
         },
         //搜索试题
         *condition({ payload }, { call, put }) {

@@ -5,7 +5,7 @@ import './IndexPage.scss';
 function IndexPage() {
   return (
     <div>
-      用户展示
+      
     </div>
   );
 }
