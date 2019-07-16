@@ -1,5 +1,4 @@
 import React from 'react';
-// import { connect } from 'dva'
 import { Layout, Menu, Icon, Spin } from 'antd';
 import { Route, Switch, NavLink } from 'dva/router';
 import AddTest from './questions/addtest/IndexPage'
@@ -11,13 +10,8 @@ import Adduser from './user/adduser/IndexPage'
 import Usershow from './user/usershow/IndexPage'
 import Addexam from './exam/addexam/IndexPage'
 import Examlist from './exam/examlist/IndexPage'
-
-
 import { connect } from 'dva';
-
-
 import './IndexPage.scss'
-// import { connect } from 'dva';
 const { SubMenu } = Menu;
 const { Sider, Content } = Layout;
 

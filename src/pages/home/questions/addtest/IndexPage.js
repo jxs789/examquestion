@@ -13,7 +13,10 @@ function IndexPage(props) {
         props.getQuestionsType()  //简答题
         props.subject() //js上下
         props.userInfo()
-    }, [])
+        if (props.addtext.code === 1) {
+            message.success('试题添加成功')
+        }
+    }, [props.addtext.code])
 
     let { addtext: { examTypedata, subjectdata, QuestionsTypedata } } = props;
     let [val, setVal] = useState('')
@@ -51,9 +54,6 @@ function IndexPage(props) {
             questions_answer: downval,
             title: topval,
         })
-        if (props.addtext.code === 1) {
-            message.success('试题添加成功')
-        }
         // console.log(faceval,val,courseval,examval,downval,topval)
         setvis(false)
     }

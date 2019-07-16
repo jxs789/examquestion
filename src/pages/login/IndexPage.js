@@ -16,9 +16,9 @@ function IndexPage(props) {
   useEffect(() => {
     if (props.isLogin === 1) {
       message.success('登录成功');
-      let path = "/";
+      // let path = "/";
       if (props.location.search) {
-         path = decodeURIComponent(props.location.search.split('=')[1])
+        decodeURIComponent(props.location.search.split('=')[1])
       }
       props.history.push('/home')
       console.log(props)

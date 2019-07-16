@@ -99,7 +99,6 @@ class Checktest extends Component {
             }
             this.props.condition(payload)
         }
-
     }
     //详情
     btn = (id) => {

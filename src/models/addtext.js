@@ -73,12 +73,11 @@ export default {
             let data = yield call(submitBtn, payload)
             yield put({
                 type: 'getCode',
-                payload: data.code === 1 ? 1 : -1
+                payload: data.code === 1 ? 1 : 0
             })
         },
         *sertQuestions({ payload }, { call, put }) {
-            console.log('sertQuestions...', payload);
-            let data = yield call(insertQuestions, payload)
+            yield call(insertQuestions, payload)
         },
         //搜索试题
         *condition({ payload }, { call, put }) {

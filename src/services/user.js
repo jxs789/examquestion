@@ -64,6 +64,32 @@ export function getApiAuthority() {
     return request.get('/user/api_authority');
 }
 
+//更新试题
+export function updataUser(payload) {
+    return request.put('/user/user', payload);
+}
+
+//添加试题
 export function AddUser(payload) {
     return request.post('/user', payload);
+}
+//添加身份
+export function Addidentity(params) {
+    return request.get('/user/identity/edit', { params });
+}
+//添加api权限
+export function Addapi(params) {
+    return request.get('/user/authorityApi/edit',  {params} );
+}
+//添加视图接口权限
+export function Addview(params) {
+    return request.get('/user/authorityView/edit',  {params} );
+}
+//给身份设置api权限
+export function Addapiauth(payload) {
+    return request.post('/user/setIdentityApi',payload );
+}
+//给身份设置视图权限
+export function AddIdentityView(payload) {
+    return request.post('/user/setIdentityView',payload );
 }

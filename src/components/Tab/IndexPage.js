@@ -1,41 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'dva';
-import styles from './IndexPage.scss';
-import { Button, Form, Input, Select, Tabs } from 'antd';
+import './IndexPage.scss';
+import { Button, Form, Input, Select, message } from 'antd';
 
 const { Option } = Select;
-const { TabPane } = Tabs;
 
 function IndexPage(props) {
-  //添加用户
   useEffect(() => {
     props.Identity()
     props.getuser()
-  }, [])
-
+    if (props.getuserCode === 1) {
+      message.success('添加成功');
+    }
+  }, [props.getuserCode])
+  //添加用户
   let [identity_id, setidentity] = useState("请选择身份id")
+  let [name_id, setName] = useState("请选择身份id")
+  let getName = (value) => {
+    setName(value)
+  }
   let getidentity = (value) => {
     setidentity(value)
   }
   let addUser = (e) => {
     e.preventDefault();
     props.form.validateFields((err, values) => {
-      props.Adduser({
-        user_name: values.username,
-        user_pwd: values.password,
-        identity_id
-      })
-    });
+      //如果是更新的话就多传一项
+      props.type === 'update' ?
+        props.updataUser({
+          user_name: values.username,
+          user_pwd: values.password,
+          identity_id,
+          user_id: name_id
+        }) : props.Adduser({
+          user_name: values.username,
+          user_pwd: values.password,
+          identity_id
+        })
+    })
   }
+
   const { getFieldDecorator } = props.form;
   let { identityData, userData } = props;
-  console.log(props.type)
 
   return (
     <>
       {
         props.type === 'update' ? (
-          <Select style={{ width: '32%' }} >
+          <Select style={{ width: '32%' }} value={name_id} onChange={getName}>
             {
               userData && userData.map((item) => (
                 <Option value={item.user_id} key={item.user_id}>{item.user_name}</Option>
@@ -90,6 +102,13 @@ const MapStateToDispatch = (dispatch) => {
     getuser: () => {
       dispatch({
         type: 'user/getuser'
+      })
+    },
+    //更新用户确定
+    updataUser: (payload) => {
+      dispatch({
+        type: 'user/updataUser',
+        payload
       })
     }
   }
