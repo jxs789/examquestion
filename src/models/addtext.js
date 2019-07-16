@@ -1,5 +1,16 @@
 
-import { examType, subject, getQuestionsType, submitBtn, userInfo, examQuestions, condition, insertQuestions,Questions } from '../services/index'
+import {
+    examType,
+    subject,
+    getQuestionsType,
+    submitBtn,
+    userInfo,
+    examQuestions,
+    condition,
+    Questions,
+    insertQuestions
+} from '../services/index'
+
 
 export default {
     namespace: 'addtext',
@@ -74,7 +85,10 @@ export default {
             let data = yield call(condition, payload)
             yield put({ type: 'exao', payload: data.data })
         },
+
         //查看试题所有数据
+
+        //试题分类
         *getDatas({ payload }, { call, put }) {
             let data = yield call(Questions)
             yield put({

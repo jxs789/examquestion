@@ -17,7 +17,6 @@ export function userInfo() {
 }
 
 export function submitBtn(params) {
-  console.log("params...", params)
   return request.post('/exam/questions', params);
 }
 //获取试题分类
@@ -42,7 +41,6 @@ export function examQuestions(){
     method:'GET'
   })
 }
-
 
 //搜索试题
 export function condition(params){

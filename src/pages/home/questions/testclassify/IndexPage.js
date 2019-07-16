@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { Modal, Button, Input, Table, message } from 'antd';
-
 import { connect } from 'dva';
 import './IndexPage.scss'
 const columns = [
     {
         title: '类型ID',
         dataIndex: 'questions_type_id',
-        // render: text => <a>{text}</a>,
     },
     {
         title: '类型名称',
@@ -25,15 +23,30 @@ const rowSelection = {
         console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
     },
     getCheckboxProps: record => ({
-        disabled: record.name === 'Disabled User', // Column configuration not to be checked
+        disabled: record.name === 'Disabled User',
         name: record.name,
     }),
 };
 class Adduser extends Component {
-    state = { visible: false };
+    state = { visible: false, value: '' };
+
     showModal = () => {
         this.setState({
             visible: true,
+        });
+    };
+
+    handleOk = e => {
+        let { questions } = this.props;
+        if (this.state.value !== '') {
+            this.props.sertQuestions({
+                text: this.state.value,
+                sort: JSON.stringify(questions.length + 1)
+            })
+        }
+        message.info('数据插入成功');
+        this.setState({
+            visible: false,
         });
     };
 
@@ -67,7 +80,6 @@ class Adduser extends Component {
                         }}></Input>
                     </Modal>
                     <Table rowSelection={rowSelection} rowKey='questions_type_id' columns={columns} dataSource={questions} />
-
                 </div>
             </div>
         );
@@ -87,11 +99,19 @@ const mapDisaptchToProps = dispatch => {
             dispatch({
                 type: 'addtext/getDatas'
             })
+        },
+        sertQuestions(payload) {
+            dispatch({
+                type: 'addtext/sertQuestions',
+                payload
+            })
         }
     }
 }
 
 export default connect(mapStateToProps, mapDisaptchToProps)(Adduser)
+
+
 
 
 

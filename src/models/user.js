@@ -1,15 +1,20 @@
-import { userAll,userAll_S ,userAll_J,userAll_K,userAll_G,userAll_M} from '../services/index'
+
+import { userAll, userAll_S, userAll_J, userAll_K, userAll_G, userAll_M, getIdentity, getUser, getViewAuthority, getApiAuthority, AddUser } from '../services/index'
 export default {
     // 命名空间
     namespace: 'user',
     // 模块的状态
     state: {
-       userAllList:[],
-       userAllLife:[],
-       userAllJoin:[],
-       userAllPart:[],
-       userAllLook:[],
-       userAllMap:[]
+        userAllList: [],
+        userAllLife: [],
+        userAllJoin: [],
+        userAllPart: [],
+        userAllLook: [],
+        userAllMap: [],
+        identityData: [],
+        userData: [],
+        viewauthorityData: [],
+        apiauthorityData: []
     },
     // 异步操作
     effects: {
@@ -61,6 +66,25 @@ export default {
                 action: data_M.data
             });
         },
+        *Identity({ payload }, { call, put }) {
+            let data = yield call(getIdentity);
+            yield put({ type: 'setIdentity', payload: data.data });
+        },
+        *getuser({ payload }, { call, put }) {
+            let data = yield call(getUser);
+            yield put({ type: 'setUser', payload: data.data });
+        },
+        *getviewauthority({ payload }, { call, put }) {
+            let data = yield call(getViewAuthority);
+            yield put({ type: 'setviewauthority', payload: data.data });
+        },
+        *getapiauthority({ payload }, { call, put }) {
+            let data = yield call(getApiAuthority);
+            yield put({ type: 'setapiauthority', payload: data.data });
+        },
+        *Adduser({ payload }, { call, put }) {
+            let data = yield call(AddUser, payload);
+        },
     },
     // 同步操作
     reducers: {
@@ -73,7 +97,7 @@ export default {
         userjoin(state, action) {
             return { ...state, userAllJoin: action.action };
         },
-         userpart(state, action) {
+        userpart(state, action) {
             return { ...state, userAllPart: action.action };
         },
         userlook(state, action) {
@@ -82,5 +106,17 @@ export default {
         usermap(state, action) {
             return { ...state, userAllMap: action.action };
         },
+        setIdentity(state, { payload }) {
+            return { ...state, identityData: payload }
+        },
+        setUser(state, { payload }) {
+            return { ...state, userData: payload }
+        },
+        setviewauthority(state, { payload }) {
+            return { ...state, viewauthorityData: payload }
+        },
+        setapiauthority(state, { payload }) {
+            return { ...state, apiauthorityData: payload }
+        }
     }
 }

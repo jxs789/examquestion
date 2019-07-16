@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'dva';
-import './IndexPage.scss';
+import styles from './IndexPage.scss';
 import { Button, Form, Input, Select, Tabs } from 'antd';
-
-import OneUser from '@/components/oneUser/IndexPage'  //第一个
-import Identity from '@/components/identity/IndexPage'  //第二个
-import Authorityapi from '@/components/authorityapi/IndexPage'  //第三个
-import Viewapi from '@/components/viewapi/IndexPage'  //第四个
-import Identityapi from '@/components/identityapi/IndexPage'  //第五个
-import Viewauth from '@/components/viewauth/IndexPage'  //第六个
+import OneTab from '@/components/oneTab/IndexPage'
 
 const { Option } = Select;
 const { TabPane } = Tabs;
 
 function IndexPage(props) {
-
+  //添加用户
   useEffect(() => {
     props.Identity()
     props.getuser()
@@ -27,29 +21,12 @@ function IndexPage(props) {
   const { getFieldDecorator } = props.form;
   let { identityData, userData, viewauthorityData, apiauthorityData } = props
   return (
-    <Form className='main'>
-      <h2>添加用户</h2>
-      <div className='main_box'>
-        <OneUser />
-        <Identity />
-        <Authorityapi />
-        <Viewapi />
-        <Identityapi />
-        <Viewauth />
-        {/* {第一个} */}
-
-        {/* {第二个} */}
-
-        {/* {第三个} */}
-
-        {/* {第四个} */}
-
-        {/* {第五个} */}
-
-        {/* {第六个} */}
-
-      </div>
-    </Form>
+    <div className='main_item'>
+      <Tabs defaultActiveKey="1" onChange={callback}>
+        <TabPane tab="添加用户" key="1"><OneTab type='add' /></TabPane>
+        <TabPane tab="更新用户" key="2"><OneTab type='update' /></TabPane>
+      </Tabs>
+    </div>
   );
 }
 
@@ -84,7 +61,7 @@ const MapStateToDispatch = (dispatch) => {
         type: 'user/Adduser',
         payload
       })
-    },
+    }
   }
 }
 

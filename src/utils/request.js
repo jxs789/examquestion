@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {getToken} from '@/utils/index'
+import { getToken } from '@/utils/index'
 
 const service = axios.create({
   baseURL: 'http://169.254.12.112:7001/',
@@ -8,8 +8,8 @@ const service = axios.create({
 
 service.interceptors.request.use(
   config => {
-    if(getToken){
-      config.headers['authorization']=getToken()
+    if (getToken) {
+      config.headers['authorization'] = getToken()
     }
     return config
   },
