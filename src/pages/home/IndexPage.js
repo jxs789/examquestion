@@ -7,6 +7,11 @@ import TestClassify from './questions/testclassify/IndexPage'
 import CheckTest from './questions/checktest/IndexPage'
 import Detail from './questions/checktest/detail/IndexPage' //试题详情
 import Edit from './questions/checktest/edit/IndexPage' //编辑详情
+import Adduser from './user/adduser/IndexPage'
+import Usershow from './user/usershow/IndexPage'
+import Addexam from './exam/addexam/IndexPage'
+import Examlist from './exam/examlist/IndexPage'
+
 import { connect } from 'dva';
 
 
@@ -49,8 +54,8 @@ function IndexPage(props) {
                 </span>
               }
             >
-              <Menu.Item>添加用户</Menu.Item>
-              <Menu.Item>用户展示</Menu.Item>
+             <Menu.Item><NavLink to='/home/user/Adduser'/>添加用户</Menu.Item>
+              <Menu.Item><NavLink to='/home/user/usershow'/>用户展示</Menu.Item>
             </SubMenu>
             <SubMenu
               title={
@@ -84,6 +89,10 @@ function IndexPage(props) {
             <Route path='/home/questions/checktest' component={CheckTest} />
             <Route path='/home/questions/detail/:id' component={Detail} />
             <Route path='/home/questions/edit/:id' component={Edit} />
+            <Route path='/home/user/adduser' component={Adduser} />
+            <Route path='/home/user/usershow' component={Usershow} />
+            <Route path='/home/exam/addexam' component={Addexam} />
+            <Route path='/home/exam/examlist' component={Examlist} />
           </Switch>
         </Content>
       </Layout>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Modal, Button, Input, Table} from 'antd';
+import { Modal, Button, Input, Table, message } from 'antd';
+
 import { connect } from 'dva';
 import './IndexPage.scss'
 const columns = [
@@ -21,7 +22,7 @@ const columns = [
 
 const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
-        // console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
     },
     getCheckboxProps: record => ({
         disabled: record.name === 'Disabled User', // Column configuration not to be checked
@@ -29,7 +30,6 @@ const rowSelection = {
     }),
 };
 class Adduser extends Component {
-
     state = { visible: false };
     showModal = () => {
         this.setState({
@@ -47,8 +47,7 @@ class Adduser extends Component {
         this.props.getData()
     };
     render() {
-        let { questions } = this.props
-        console.log(this.props.questions)
+        let { questions } = this.props;
         return (
             <div className="content">
                 <h2 style={{ marginTop: "10px" }}>考试分类</h2>
@@ -78,7 +77,7 @@ class Adduser extends Component {
 
 const mapStateToProps = state => {
     return {
-        ...state.user
+        ...state.addtext
     }
 }
 
@@ -86,7 +85,7 @@ const mapDisaptchToProps = dispatch => {
     return {
         getData() {
             dispatch({
-                type: 'user/getDatas'
+                type: 'addtext/getDatas'
             })
         }
     }
