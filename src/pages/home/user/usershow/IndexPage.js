@@ -3,7 +3,6 @@ import { connect } from 'dva';
 import {  Tabs, Table } from 'antd';
 import styles from './IndexPage.scss';
 
-
 function IndexPage(props) {
     const columns = [
         {
@@ -92,8 +91,7 @@ function IndexPage(props) {
     }, [])
 
     let { userAllList, userAllLife ,userAllJoin,userAllPart,userAllLook,userAllMap} = props
-    // console.log(userAllList)
-    console.log(userAllMap)
+
     return (
         <div className={styles.content}>
             <h2 className={styles.content_h2}>用户展示</h2>

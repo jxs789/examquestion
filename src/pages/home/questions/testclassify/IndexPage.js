@@ -48,13 +48,12 @@ class Adduser extends Component {
         this.setState({
             visible: false,
         });
-    };
-
+    }
     handleCancel = e => {
         this.setState({
             visible: false,
         });
-    };
+    }
 
     componentDidMount() {
         this.props.getData()

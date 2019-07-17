@@ -10,6 +10,8 @@ import Adduser from './user/adduser/IndexPage'
 import Usershow from './user/usershow/IndexPage'
 import Addexam from './exam/addexam/IndexPage'
 import Examlist from './exam/examlist/IndexPage'
+import ListDetail from './exam/examlist/listDetail/IndexPage' //编辑详情
+
 import { connect } from 'dva';
 import './IndexPage.scss'
 const { SubMenu } = Menu;
@@ -60,8 +62,8 @@ function IndexPage(props) {
                 </span>
               }
             >
-              <Menu.Item>添加考试</Menu.Item>
-              <Menu.Item>试卷列表</Menu.Item>
+              <Menu.Item><NavLink to='/home/exam/addexam'/>添加考试</Menu.Item>
+              <Menu.Item><NavLink to='/home/exam/examlist'/>试卷列表</Menu.Item>
             </SubMenu>
             <SubMenu
               title={
@@ -88,6 +90,7 @@ function IndexPage(props) {
             <Route path='/home/user/usershow' component={Usershow} />
             <Route path='/home/exam/addexam' component={Addexam} />
             <Route path='/home/exam/examlist' component={Examlist} />
+            <Route path='/home/exam/listDetail/:id' component={ListDetail} />
           </Switch>
         </Content>
       </Layout>

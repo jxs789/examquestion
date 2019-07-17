@@ -1,0 +1,40 @@
+:global {
+  .content {
+    width: 100%;
+    height: 100%;
+    padding: 30px 40px;
+    box-sizing: border-box;
+    h2 {
+    }
+    .wrap_box {
+      width: 100%;
+      // height: 90%;
+      border-radius: 10px;
+      background: #fff;
+      padding: 10px 10px;
+      box-sizing: border-box;
+      .small_box {
+        margin-top:10px;
+        border: 1px solid #ccc;
+        border .react_markdown {
+          padding: 0 20px;
+          display: flex;
+          flex-direction: column;
+          pre {
+            width: 100%;
+            margin: 5px 21px;
+            padding: 0 14px;
+            overflow: hidden;
+            color: #657b83;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8AgMAAABHkjHhAAAACVBMV…v3iO9zG/UOphyPeinPl1J8Gtaa7xPTa/Dk+RIs4deMvwGvcGsmsCvJ0AAAAABJRU5ErkJggg==)
+              #f6f6f6;
+            background-size: 30px 30px;
+            code {
+              // margin-left:-20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
