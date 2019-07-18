@@ -11,6 +11,9 @@ import Usershow from './user/usershow/IndexPage'
 import Addexam from './exam/addexam/IndexPage'
 import Examlist from './exam/examlist/IndexPage'
 import ListDetail from './exam/examlist/listDetail/IndexPage' //编辑详情
+import Classmanage from './class/classmanage/IndexPage'
+import Classroommanage from './class/classroommanage/IndexPage'
+import Studentmanage from './class/studentmanage/IndexPage'
 
 import { connect } from 'dva';
 import './IndexPage.scss'
@@ -51,8 +54,8 @@ function IndexPage(props) {
                 </span>
               }
             >
-             <Menu.Item><NavLink to='/home/user/Adduser'/>添加用户</Menu.Item>
-              <Menu.Item><NavLink to='/home/user/usershow'/>用户展示</Menu.Item>
+              <Menu.Item><NavLink to='/home/user/Adduser' />添加用户</Menu.Item>
+              <Menu.Item><NavLink to='/home/user/usershow' />用户展示</Menu.Item>
             </SubMenu>
             <SubMenu
               title={
@@ -62,8 +65,8 @@ function IndexPage(props) {
                 </span>
               }
             >
-              <Menu.Item><NavLink to='/home/exam/addexam'/>添加考试</Menu.Item>
-              <Menu.Item><NavLink to='/home/exam/examlist'/>试卷列表</Menu.Item>
+              <Menu.Item><NavLink to='/home/exam/addexam' />添加考试</Menu.Item>
+              <Menu.Item><NavLink to='/home/exam/examlist' />试卷列表</Menu.Item>
             </SubMenu>
             <SubMenu
               title={
@@ -73,9 +76,9 @@ function IndexPage(props) {
                 </span>
               }
             >
-              <Menu.Item>班级管理</Menu.Item>
-              <Menu.Item>教室管理</Menu.Item>
-              <Menu.Item>学生管理</Menu.Item>
+              <Menu.Item><NavLink to='/home/class/classmanage' />班级管理</Menu.Item>
+              <Menu.Item><NavLink to='/home/class/classroommanage' />教室管理</Menu.Item>
+              <Menu.Item><NavLink to='/home/class/studentmanage' />学生管理</Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>
@@ -91,6 +94,9 @@ function IndexPage(props) {
             <Route path='/home/exam/addexam' component={Addexam} />
             <Route path='/home/exam/examlist' component={Examlist} />
             <Route path='/home/exam/listDetail/:id' component={ListDetail} />
+            <Route path='/home/class/classmanage' component={Classmanage} />
+            <Route path='/home/class/classroommanage' component={Classroommanage} />
+            <Route path='/home/class/studentmanage' component={Studentmanage} />
           </Switch>
         </Content>
       </Layout>
