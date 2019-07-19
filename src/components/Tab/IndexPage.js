@@ -13,30 +13,23 @@ function IndexPage(props) {
       message.success('添加成功');
     }
   }, [props.getuserCode])
-  //添加用户
-  let [identity_id, setidentity] = useState("请选择身份id")
-  let [name_id, setName] = useState("请选择身份id")
-  let getName = (value) => {
-    setName(value)
-  }
-  let getidentity = (value) => {
-    setidentity(value)
-  }
-  let addUser = (e) => {
-    e.preventDefault();
+
+  let addUser = () => {
     props.form.validateFields((err, values) => {
       //如果是更新的话就多传一项
-      props.type === 'update' ?
-        props.updataUser({
-          user_name: values.username,
-          user_pwd: values.password,
-          identity_id,
-          user_id: name_id
-        }) : props.Adduser({
-          user_name: values.username,
-          user_pwd: values.password,
-          identity_id
-        })
+      if (!err) {
+        props.type === 'update' ?
+          props.updataUser({
+            user_name: values.username,
+            user_pwd: values.password,
+            identity_id: values.identity_id,
+            user_id: values.name_id
+          }) : props.Adduser({
+            user_name: values.username,
+            user_pwd: values.password,
+            identity_id: values.identity_id
+          })
+      }
     })
   }
 
@@ -46,32 +39,49 @@ function IndexPage(props) {
   return (
     <>
       {
-        props.type === 'update' ? (
-          <Select style={{ width: '32%' }} value={name_id} onChange={getName}>
-            {
-              userData && userData.map((item) => (
-                <Option value={item.user_id} key={item.user_id}>{item.user_name}</Option>
-              ))
-            }
-          </Select>
-        ) : null}
+        props.type === 'update' ?
+          <Form.Item>
+            {getFieldDecorator('name_id', {
+              rules: [{ required: true, message: 'Please input your username!' }],
+            })(
+              <Select style={{ width: '32%' }}>
+                {
+                  userData && userData.map((item) => (
+                    <Option value={item.user_id} key={item.user_id}>{item.user_name}</Option>
+                  ))
+                }
+              </Select>
+            )}
+          </Form.Item>
+          : null}
       <Form.Item>
-        {getFieldDecorator('username')(
+        {getFieldDecorator('username', {
+          rules: [{ required: true, message: 'Please input your username!' }],
+        })(
           <Input placeholder="请输入用户名" />,
         )}
       </Form.Item>
       <Form.Item>
-        {getFieldDecorator('password')(
+        {getFieldDecorator('password', {
+          rules: [{ required: true, message: 'Please input your username!' }],
+        })(
           <Input placeholder="请输入密码" />,
         )}
       </Form.Item>
-      <Select style={{ width: '32%' }} value={identity_id} onChange={getidentity}>
-        {
-          identityData && identityData.map((item) => (
-            <Option value={item.identity_id} key={item.identity_id}>{item.identity_text}</Option>
-          ))
-        }
-      </Select>
+      <Form.Item>
+        {getFieldDecorator('identity_id', {
+          rules: [{ required: true, message: '请选择身份id!' }],
+        })(
+          <Select style={{ width: '32%' }}>
+            {
+              identityData && identityData.map((item) => (
+                <Option value={item.identity_id} key={item.identity_id}>{item.identity_text}</Option>
+              ))
+            }
+          </Select>
+        )}
+      </Form.Item>
+
       <div className='oneBtn'>
         <Button type="primary" htmlType="submit"
           onClick={addUser}

@@ -12,20 +12,22 @@ function IndexPage(props) {
   }, [props.identityCode])
 
   const { getFieldDecorator } = props.form;
-  let sure = (e) => {
-    e.preventDefault();
+  let sure = () => {
     props.form.validateFields((err, values) => {
-
-      props.Addidentity({
-        identity_text: values.identity_Name
-      })
+      if(!err){
+        props.Addidentity({
+          identity_text: values.identity_Name
+        })
+      }
     })
   }
   return (
     <div className='main_item'>
       <Button>添加身份</Button>
       <Form.Item>
-        {getFieldDecorator('identity_Name')(
+        {getFieldDecorator('identity_Name', {
+            rules: [{ required: true, message: '请输入身份名称!' }],
+          })(
           <Input placeholder="请输入身份名称" />,
         )}
       </Form.Item>

@@ -49,7 +49,9 @@ function IndexPage(props) {
   //查询
   let about = () => {
     props.form.validateFields((err, values) => {
-      // console.log(values)
+      if (!err) {
+
+      }
     });
   }
   //详情
@@ -71,7 +73,7 @@ function IndexPage(props) {
               <span>考试类型：</span>
               <Form.Item>
                 {getFieldDecorator('exam_type', {
-                  // rules: [{ required: true, message: 'Please input your username!' }],
+                  rules: [{ required: true, message: '请选择考试类型!' }],
                 })(
                   <Select style={{ width: 200 }} >
                     {
@@ -87,7 +89,7 @@ function IndexPage(props) {
               <span>题目类型：</span>
               <Form.Item>
                 {getFieldDecorator('subject_type', {
-                  // rules: [{ required: true, message: 'Please input your username!' }],
+                  rules: [{ required: true, message: '请选择课程类型!' }],
                 })(
                   <Select style={{ width: 200 }} >
                     {

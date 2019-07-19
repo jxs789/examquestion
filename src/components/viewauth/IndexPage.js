@@ -14,38 +14,49 @@ function IndexPage(props) {
     }
   }, [props.ivCode])
 
-  let [identity_id, setOne] = useState('请选择身份id')
-  let [view_authority_id, setTwo] = useState('请选择身份id')
-  let getOne = (value) => {
-    setOne(value)
-  }
-  let getTwo = (value) => {
-    setTwo(value)
-  }
   let sure = () => {
-    props.AddIdentityView({
-      identity_id,
-      view_authority_id
+    props.form.validateFields((err, values) => {
+      if (!err) {
+        props.AddIdentityView({
+          identity_id: values.identity_id,
+          view_authority_id: values.view_authority_id
+        })
+      }
     })
+
+
   }
   let { identityData, viewauthorityData } = props
+  const { getFieldDecorator } = props.form;
   return (
     <div className='main_item'>
       <Button>给身份设置视图权限</Button><br />
-      <Select style={{ width: '32%' }} value={identity_id} onChange={getOne}>
-        {
-          identityData && identityData.map((item) => (
-            <Option value={item.identity_id} key={item.identity_id}>{item.identity_text}</Option>
-          ))
-        }
-      </Select><br />
-      <Select style={{ width: '32%' }} value={view_authority_id} onChange={getTwo}>
-        {
-          viewauthorityData && viewauthorityData.map((item) => (
-            <Option value={item.view_authority_id} key={item.view_authority_id}>{item.view_authority_text}</Option>
-          ))
-        }
-      </Select>
+      <Form.Item>
+        {getFieldDecorator('identity_id', {
+          rules: [{ required: true, message: '请选择身份id！' }],
+        })(
+          <Select style={{ width: '32%' }}>
+            {
+              identityData && identityData.map((item) => (
+                <Option value={item.identity_id} key={item.identity_id}>{item.identity_text}</Option>
+              ))
+            }
+          </Select>
+        )}
+      </Form.Item><br />
+      <Form.Item>
+        {getFieldDecorator('view_authority_id', {
+          rules: [{ required: true, message: '请选择身份id！' }],
+        })(
+          <Select style={{ width: '32%' }}>
+            {
+              viewauthorityData && viewauthorityData.map((item) => (
+                <Option value={item.view_authority_id} key={item.view_authority_id}>{item.view_authority_text}</Option>
+              ))
+            }
+          </Select>
+        )}
+      </Form.Item>
       <div>
         <Button type="primary" htmlType="submit" className='btn_active' onClick={sure}>确定</Button>
         <Button>重置</Button>

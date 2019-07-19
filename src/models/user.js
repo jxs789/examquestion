@@ -90,6 +90,7 @@ export default {
         //添加用户
         *Adduser({ payload }, { call, put }) {
             let data = yield call(AddUser, payload);
+            console.log(data)
             yield put({
                 type: 'getuserCode',
                 payload: data.userCode === 1 ? 1 : 0
@@ -98,6 +99,8 @@ export default {
         //更新用户
         *updataUser({ payload }, { call, put }) {
             let data = yield call(updataUser, payload)
+            console.log(data)
+
             yield put({
                 type: 'getuserCode',
                 payload: data.identityCode === 1 ? 1 : 0

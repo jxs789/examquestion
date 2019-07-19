@@ -1,5 +1,9 @@
 import request from '../utils/request';
 
-// export function query() {
-//   return request.get('/api/users');
-// }
+export function getGrade() {
+  return request.get('/manger/grade')
+}
+
+export function getRoom() {
+  return request.get('/manger/room')
+}

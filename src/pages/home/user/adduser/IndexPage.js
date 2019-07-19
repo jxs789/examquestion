@@ -26,39 +26,4 @@ function IndexPage(props) {
   );
 }
 
-const MapStateToProps = (state) => {
-  return { ...state.user }
-}
-const MapStateToDispatch = (dispatch) => {
-  return {
-    // Identity: () => {
-    //   dispatch({
-    //     type: 'user/Identity'
-    //   })
-    // },
-    // getuser: () => {
-    //   dispatch({
-    //     type: 'user/getuser'
-    //   })
-    // },
-    // getviewauthority: () => {
-    //   dispatch({
-    //     type: 'user/getviewauthority'
-    //   })
-    // },
-    // getapiauthority: () => {
-    //   dispatch({
-    //     type: 'user/getapiauthority'
-    //   })
-    // },
-    // //添加用户确定
-    // Adduser: (payload) => {
-    //   dispatch({
-    //     type: 'user/Adduser',
-    //     payload
-    //   })
-    // },
-  }
-}
-
-export default connect(MapStateToProps, MapStateToDispatch)(Form.create()(IndexPage));
+export default connect()(Form.create()(IndexPage));

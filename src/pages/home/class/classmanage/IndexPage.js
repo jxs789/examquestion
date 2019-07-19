@@ -7,7 +7,7 @@ const { Option } = Select;
 
 function IndexPage(props) {
   useEffect(() => {
-
+    props.getGrade()
   }, [])
   const columns = [
     {
@@ -16,35 +16,44 @@ function IndexPage(props) {
     },
     {
       title: '课程名',
-      dataIndex: 'user_name',
+      dataIndex: 'subject_text',
     }, {
       title: '教室号',
-      dataIndex: 'start_time',
+      dataIndex: 'room_text',
     }, {
       title: '操作',
       dataIndex: '',
       render: (text, rect) => <div>
-        <span>修改</span>
-        <span>删除</span>
+        <span onClick={Edit}>修改|</span>
+        <span onClick={Delete}>删除</span>
       </div>,
     }]
+  let Edit = () => {
+    console.log(45)
+  }
+  let Delete = () => {
+    console.log(78)
 
+  }
   let [getvisible, setvisible] = useState(false)
   let addClass = () => {
     setvisible(true)
   }
   let handleOk = () => {
     props.form.validateFields((err, values) => {
+      if (!err) {
 
+      }
     })
     setvisible(false)
   }
   let handleCancel = () => {
     setvisible(false)
   }
-  // let { } = props
-  const { getFieldDecorator } = props.form;
 
+  const { getFieldDecorator } = props.form;
+  let { gradedata } = props;
+  console.log(props)
   return (
     <Form>
       <div className='content'>
@@ -54,7 +63,7 @@ function IndexPage(props) {
             <Button type="primary" icon="plus" onClick={addClass}>添加班级</Button>
           </div>
           <div className='list_care'>
-            <Table columns={columns} />
+            <Table columns={columns} dataSource={gradedata} rowKey='grade_id' />
           </div>
         </div>
       </div>
@@ -68,6 +77,7 @@ function IndexPage(props) {
           </Button>
         ]}
       >
+        <p>*班级名:</p>
         <Form.Item>
           {getFieldDecorator('classname', {
             rules: [{ required: true, message: '请输入班级名' }],
@@ -76,6 +86,7 @@ function IndexPage(props) {
             />,
           )}
         </Form.Item>
+        <p>*教室号:</p>
         <Form.Item>
           {getFieldDecorator('classroom', {
             rules: [{ required: true, message: '请选择教室号' }],
@@ -85,6 +96,7 @@ function IndexPage(props) {
             </Select>
           )}
         </Form.Item>
+        <p>*课程名:</p>
         <Form.Item>
           {getFieldDecorator('subject', {
             rules: [{ required: true, message: '请选择课程名' }],
@@ -104,7 +116,11 @@ const MapStateToProps = (state) => {
 }
 const MapStateToDispatch = (dispatch) => {
   return {
-
+    getGrade: () => {
+      dispatch({
+        type: 'class/getGrade'
+      })
+    }
   }
 }
 
