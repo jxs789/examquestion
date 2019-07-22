@@ -4,7 +4,7 @@ export default {
     namespace: 'global',
     // 模块的状态
     state: {
-        locale: navigator.language.indexOf('zh') != -1 ? 'zh' : 'en'
+        locale: navigator.language.indexOf('zh') !== -1 ? 'zh' : 'en'
     },
     // 异步操作
     effects: {

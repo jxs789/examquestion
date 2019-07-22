@@ -56,9 +56,8 @@ function IndexPage(props) {
   }
   //详情
   let hrefDetail = (id) => {
-    props.history.push({
-      pathname: `/home/exam/listDetail/${id}`
-    })
+    console.log(id)
+    props.history.push(`/home/exam/listDetail/${id}`)
   }
   const { examTypedata, subjectdata, examListdata: { exam } } = props
   const { getFieldDecorator } = props.form;

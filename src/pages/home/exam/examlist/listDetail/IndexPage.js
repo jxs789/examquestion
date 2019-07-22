@@ -5,11 +5,12 @@ import ReactMarkdown from 'react-markdown';
 
 function IndexPage(props) {
   useEffect(() => {
+    console.log(props.match)
     props.listDetail(props.match.params.id)
   }, [])
 
   let { listDetaildata: { questions } } = props
-
+  // console.log(props)
   return (
     <div className='content'>
       <h2>试卷详情</h2>

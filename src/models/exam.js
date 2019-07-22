@@ -36,6 +36,7 @@ export default {
         },
         //列表详情
         *listDetail({ payload }, { call, put }) {
+            console.log(payload)
             let data = yield call(listDetail,payload)
             yield put({
                 type: 'listdetail',

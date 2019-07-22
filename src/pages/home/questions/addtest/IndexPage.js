@@ -3,8 +3,10 @@ import { connect } from 'dva';
 import './IndexPage.scss';
 import { Input, Select, Button, Modal, message } from 'antd';
 import Editor from 'for-editor'
+import { injectIntl } from 'react-intl';
 
 const { Option } = Select;
+
 
 function IndexPage(props) {
     useEffect(() => {
@@ -65,7 +67,7 @@ function IndexPage(props) {
     }
     return (
         <div className="bigBox">
-            <p>添加试题</p>
+            <p>{props.intl.formatMessage({ id: 'router.questions.add' })}</p>
             <div className="smallBox">
                 <p>题目信息</p>
                 <p>题干</p>
@@ -187,4 +189,4 @@ const MapStateToDispatch = (dispatch) => {
     }
 }
 
-export default connect(MapStateToProps, MapStateToDispatch)(IndexPage);
+export default injectIntl(connect(MapStateToProps, MapStateToDispatch)(IndexPage));

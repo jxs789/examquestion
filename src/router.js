@@ -33,6 +33,12 @@ let RouterView = connect(MapStateToProps)((props) => {
           <Route path="/" exact component={IndexPage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/home" component={HomePage} />
+          <Route path="/403" render={props => {
+            return <p>你无权访问当前页面</p>
+          }}></Route>
+          <Route path="/404" render={props => {
+            return <p>当前页面不存在</p>
+          }}></Route>
         </Switch>
       </Router>
     </IntlProvider>

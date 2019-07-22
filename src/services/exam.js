@@ -14,5 +14,6 @@ export function examList() {
 }
 //列表详情数据
 export function listDetail(params) {
+    console.log(params)
     return request.get(`/exam/exam/${params}`);
 }
